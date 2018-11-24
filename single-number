@@ -1,0 +1,13 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet<Integer> hash = new HashSet<Integer>();
+        
+        for (int i : nums){
+            if (!hash.add(i)){
+                hash.remove(i);
+            }
+        }
+        Iterator<Integer> it = hash.iterator();
+        return it.next();
+    }
+}
