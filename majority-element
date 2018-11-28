@@ -1,0 +1,26 @@
+class Solution {
+    private Map<Integer, Integer> count(int[] nums){
+        Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
+        for (int item : nums){
+            if (!counts.containsKey(item)){
+                counts.put(item, 1);
+            }
+            else {
+                counts.put(item, counts.get(item)+1);
+            }
+        }
+        return counts;
+    }
+    
+    public int majorityElement(int[] nums) {
+        Map<Integer, Integer> countMap= count(nums);
+        
+        Map.Entry<Integer, Integer> majorityEntry = null;
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()){
+            if (majorityEntry == null || entry.getValue() >                         majorityEntry.getValue()){
+                majorityEntry = entry;
+            }
+        }
+        return majorityEntry.getKey();
+    }
+}
