@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> tringle = new ArrayList<List<Integer>>();
+        
+        if (numRows == 0){
+            return tringle;
+        }
+        
+        tringle.add(new ArrayList<Integer>());
+        tringle.get(0).add(1);
+        
+        for (int row = 1; row < numRows; row++){
+            List<Integer> r = new ArrayList<Integer>();
+            List<Integer> prev = tringle.get(row-1);
+            
+            r.add(1);
+            
+            for (int j = 1; j < row; j++){
+                r.add(prev.get(j-1) + prev.get(j));
+            }
+            
+            r.add(1);
+            
+            tringle.add(r);
+        }
+        return tringle;
+    }
+}
